@@ -29,7 +29,7 @@ async def get_and_save_async(url: str, session: aiohttp.ClientSession, i: int) -
         await file.write(result)
 
 
-async def run_aysnc_version() -> None:
+async def run_async_version() -> None:
     async with aiohttp.ClientSession() as session:
         await asyncio.gather(*[get_and_save_async(url, session, i) for i, url in enumerate(URLS)])
 
@@ -57,7 +57,7 @@ if __name__ == "__main__":
         os.makedirs('trash')
 
     start = time.perf_counter()
-    asyncio.run(run_aysnc_version())
+    asyncio.run(run_async_version())
     elapsed = time.perf_counter() - start
     print(f"Async completed in {elapsed:0.3f} seconds.")
 
