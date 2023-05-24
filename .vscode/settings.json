@@ -1,0 +1,14 @@
+{
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "yapf",
+    "python.formatting.yapfArgs": [
+        "--style={based_on_style: google, column_limit: 120, EACH_DICT_ENTRY_ON_SEPARATE_LINE: false}"
+    ],
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--max-line-length=120"
+    ],
+    "python.linting.flake8CategorySeverity.E": "Warning",
+    "python.linting.flake8CategorySeverity.F": "Warning",
+    "python.analysis.typeCheckingMode": "off"
+}
