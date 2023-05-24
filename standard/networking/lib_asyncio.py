@@ -53,6 +53,9 @@ def run_sync_version() -> None:
 if __name__ == "__main__":
     import time
 
+    if not os.path.isdir('trash'):
+        os.makedirs('trash')
+
     start = time.perf_counter()
     asyncio.run(run_aysnc_version())
     elapsed = time.perf_counter() - start
