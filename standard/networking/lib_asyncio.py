@@ -50,6 +50,21 @@ def run_sync_version() -> None:
             get_and_save_sync(url, session, i)
 
 
+# --------------------
+
+
+async def lock_test(secs: int, lock: asyncio.Lock) -> None:
+    async with lock:
+        print('IN CS', secs)
+        await asyncio.sleep(secs)
+        print('OUT CS', secs)
+
+
+async def lock_version() -> None:
+    lock = asyncio.Lock()
+    await asyncio.gather(lock_test(4, lock), lock_test(8, lock))
+
+
 if __name__ == "__main__":
     import time
 
@@ -65,6 +80,8 @@ if __name__ == "__main__":
     run_sync_version()
     elapsed = time.perf_counter() - start
     print(f"Sync completed in {elapsed:0.3f} seconds.")
+
+    asyncio.run(lock_version())
 
     # Clean trash
     shutil.rmtree('./trash/')
